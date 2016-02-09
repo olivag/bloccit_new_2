@@ -12,6 +12,7 @@ end
 
 # #2
 group :development do
+  gem 'pry-rails'
   gem 'sqlite3'
 end
 
