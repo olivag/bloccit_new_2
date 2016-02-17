@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160211162819) do
+ActiveRecord::Schema.define(version: 20160217010445) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "body"
@@ -41,5 +41,13 @@ ActiveRecord::Schema.define(version: 20160211162819) do
   end
 
   add_index "topics", ["public"], name: "index_topics_on_public"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
 end
