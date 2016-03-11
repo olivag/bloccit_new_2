@@ -33,23 +33,23 @@ end
 
 posts = Post.all
 
-# Creates Comments for Post
-# 100.times do
-#   Comment.create!(
-#     post: posts.sample,
-#     body: RandomData.random_paragraph,
-#     user: users.sample
-#   )
-# end
+#Creates Comments for Post
+100.times do
+  Comment.create!(
+    post: posts.sample,
+    body: RandomData.random_paragraph,
+    user: users.sample
+  )
+end
 
-# Creates Comments for Topic
-# 100.times do
-#   Comment.create!(
-#     topic: topics.sample,
-#     body: RandomData.random_paragraph,
-#     user: users.sample
-#   )
-# end
+#Creates Comments for Topic
+100.times do
+  Comment.create!(
+    topic: topics.sample,
+    body: RandomData.random_paragraph,
+    user: users.sample
+  )
+end
 
 # Create an admin user
 admin = User.create!(
