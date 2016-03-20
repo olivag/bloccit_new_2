@@ -5,6 +5,7 @@ gem 'rails', '4.2.5'
 gem 'bootstrap-sass'
 gem 'shoulda'
 gem 'bcrypt'
+gem 'figaro', '1.0'
 
 # #1
 group :production do
