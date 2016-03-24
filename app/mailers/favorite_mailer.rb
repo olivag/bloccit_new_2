@@ -1,5 +1,5 @@
 class FavoriteMailer < ApplicationMailer
-  default from: "ryumaster001@yahoo.com"
+  default from: "goliva001@gmail.com"
 
   def new_comment(user, post, comment)
     headers["Message-ID"]  = "<comments/#{comment.id}@obscure-mesa-97051.herokuapp.com>"
