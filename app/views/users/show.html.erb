@@ -33,6 +33,31 @@
   <%= render @user.comments %>
 <% end %>
 
+<% if user_has_favorites?(current_user) %>
+  <h3>Favorites for <%= current_user.name %>:</h3>
+  <% current_user.favorites.each do |favorite| %>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="media">
+          <div class="media-left">
+            <%= image_tag favorite.post.user.avatar_url(48), class: "gravatar" %>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading"><%= link_to favorite.post.title, [favorite.post.topic, favorite.post] %></h4>
+            <small>
+              <%= pluralize(favorite.post.points, "point") %><br />
+              <%= pluralize(favorite.post.up_votes, "up vote") %>,
+              <%= pluralize(favorite.post.down_votes, "down vote") %><br />
+              <%= pluralize(favorite.post.comments.count, "Comment") %>
+            </small>
+          </div>
+      </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+
 
 
 

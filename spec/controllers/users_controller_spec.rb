@@ -80,6 +80,19 @@ RSpec.describe UsersController, type: :controller do
       expect(assigns(:user)).to eq(factory_user)
     end
   end
+
+  describe "GET show" do
+    let(:factory_user) { create(:user) }
+    let(:my_topic) { create(:topic, user: :factory_user) }
+    
+    before do
+      post :create, { user: new_user_attributes }
+    end
+    
+    it "contains favorited posts from current_user" do
+
+    end
+  end
 end
 
 
