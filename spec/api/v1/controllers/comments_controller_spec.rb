@@ -1,8 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::TopicsController, type: :controller do
-  let(:my_user)  { create(:user) }
-  let(:my_topic) { create(:topic) }
+RSpec.describe Api::V1::CommentsController, type: :controller do
+  let(:my_user)    { create(:user) }
+  let(:my_topic)   { create(:topic) }
+  let(:my_post)    { create(:post, topic: my_topic) }
+  let(:my_comment) { create(:comment, post: my_post) }
 
   context "unauthenticated user" do
     it "GET index returns http succes" do
@@ -11,14 +13,15 @@ RSpec.describe Api::V1::TopicsController, type: :controller do
     end
 
     it "GET show returns http success" do
-      get :show, id: my_topic.id
+      get :show, id: my_comment.id
       expect(response).to have_http_status(:success)
     end
 
-    it "GET show returns child posts" do
-      get :show, id: my_topic.id
+    it "GET show returns a comment" do
+      get :show, id: my_comment.id
       response_hash = JSON.parse response.body
-      expect(response_hash['posts']).not_to be_nil
+      expect(response_hash['id']).to eq my_comment.id
+      expect(response_hash['body']).to eq my_comment.body
     end
   end
 
@@ -33,14 +36,15 @@ RSpec.describe Api::V1::TopicsController, type: :controller do
     end
 
     it "GET show returns success" do
-      get :show, id: my_topic.id
+      get :show, id: my_comment.id
       expect(response).to have_http_status(:success)
     end
 
-    it "GET show returns child posts" do
-      get :show, id: my_topic.id
+    it "GET show returns a comment" do
+      get :show, id: my_comment.id
       response_hash = JSON.parse response.body
-      expect(response_hash['posts']).not_to be_nil
+      expect(response_hash['id']).to eq my_comment.id
+      expect(response_hash['body']).to eq my_comment.body
     end
   end
 end
