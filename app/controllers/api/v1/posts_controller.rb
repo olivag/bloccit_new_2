@@ -12,7 +12,10 @@ class Api::V1::PostsController < Api::V1::BaseController
   end
 
   def create
+    topic = Topic.find(params[:topic_id])
     post = Post.new(post_params)
+    post.user = @current_user
+    post.topic = topic
     if post.valid?
       post.save!
       render json: post.to_json, status: 200
